@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <!--<link rel="stylesheet" href="{% static 'login/css/login.css' %}">-->
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="main-login">
+    <form enctype="multipart/form-data" method="post">
+		{% csrf_token %}
+		{{ form }}
+		<input type="submit" value="注册">
+	</form><br>
+<p id="error">{{ msg }}</p>
+    </div>
+</body>
+</html>

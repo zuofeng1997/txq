@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<html>
+<head>
+	<!--<link rel="stylesheet" href="{% static 'login/css/login.css' %}">-->
+	<title></title>
+</head>
+<body>
+    <div class="main-login">
+	<form method="post">
+		{% csrf_token %}
+		{{ form }}
+		<input type="submit" value="登录">
+	</form><br>
+<p id="error">{{ msg }}</p>
+    </div>
+</body>
+</html>

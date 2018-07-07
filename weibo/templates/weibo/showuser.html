@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a href="{% url 'login:login' %}">登录</a><br>
+    <a href="{% url 'login:register' %}">注册</a><br>
+    <div>
+        欢迎 {{ user.username }}
+        <img src="{{ user.imageurl }}">
+    </div>
+
+    <div>
+        我的关注:
+        {% if list_follow is not None %}
+            {% for follow in list_follow %}
+                <a href="/weibo/showotheruser/{{ follow.pk }}">{{ follow.username }}</a><a href="/weibo/showuser/{{ user.pk }}?cancel={{ follow.pk }}">取关</a><br>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div>
+        我的微博:
+        {% for weibo in list_weibo %}
+            <a href="/weibo/showweibo/{{ user.pk }}/{{ weibo.pk }}">{{ weibo.content }}</a><br>
+        {% endfor %}
+    </div>
+    <div>
+        写微博<br>
+        <form method="post">
+            {% csrf_token %}
+            <textarea name="content" rows="3" cols="20">
+            </textarea>
+            <input type="submit" value="提交">
+        </form>
+    </div>
+
+    <div>
+        所有用户：<br>
+
+        {% for otheruser in allUser %}
+            <a href="/weibo/showotheruser/{{ otheruser.pk }}">{{ otheruser.username }}</a>  &nbsp;
+        <a href="/weibo/showuser/{{ user.pk }}?follow={{ otheruser.pk }}">关注</a><br>
+        {% endfor %}
+    </div>
+
+
+
+</body>
+</html>

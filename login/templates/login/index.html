@@ -1,0 +1,15 @@
+{% load staticfiles %}
+<html>
+<head>
+    <!--<link rel="stylesheet" href="{% static 'login/css/login.css' %}">-->
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="main-login">
+    <a href="/login/login">登录</a><br>
+    <a href="/login/register">注册</a>
+<p id="error">{{ msg }}</p>
+    </div>
+</body>
+</html>

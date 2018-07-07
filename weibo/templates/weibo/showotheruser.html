@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div> <a href="/weibo/showuser/{{ iid }}">首页</a></div> <br>
+    <div>
+        {{ user.username }}
+        <img src="{{ user.imageurl }}">
+    </div>
+
+    <div>
+        他的微博:
+        {% for weibo in list_weibo %}
+            <a href="/weibo/showweibo/{{ user.pk }}/{{ weibo.pk }}">{{ weibo.content }}</a><br>
+        {% endfor %}
+    </div>
+    <br>
+
+    <a href="/weibo/showotheruser/{{ user.pk }}">关注</a>
+</body>
+</html>
